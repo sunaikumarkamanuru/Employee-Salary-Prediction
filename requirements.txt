@@ -1,5 +1,6 @@
-streamlit
+flask
+gunicorn
 pandas
 numpy
-scikit-learn==1.7.2
 joblib
+scikit-learn==1.7.2
