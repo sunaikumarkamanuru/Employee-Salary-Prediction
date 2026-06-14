@@ -13,10 +13,8 @@ def main():
 
     df = pd.read_csv("job_salary_prediction_dataset.csv")
 
-    # Target column
     target = "salary"
 
-    # Features
     categorical_features = [
         "job_title",
         "education_level",
@@ -68,10 +66,10 @@ def main():
             (
                 "model",
                 RandomForestRegressor(
-                    n_estimators=5,      # reduced from 30
-                    max_depth=10,        # limit tree growth
-                    min_samples_leaf=5,  # reduce complexity
-                    n_jobs=1,            # avoid memory spikes
+                    n_estimators=5,
+                    max_depth=10,
+                    min_samples_leaf=5,
+                    n_jobs=1,
                     random_state=42
                 )
             )
