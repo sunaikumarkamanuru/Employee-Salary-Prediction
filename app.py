@@ -9,18 +9,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Header
+# App header
 st.title("💸 Employee Salary Prediction")
 st.markdown(
     "Predict employee salaries based on their experience, education, role, and industry."
 )
 
-st.write("✅ Step 1: App started")
-
 @st.cache_data
 def load_data_choices():
-    st.write("📂 Reading dataset...")
-
     df = pd.read_csv("job_salary_prediction_dataset.csv")
 
     choices = {
@@ -36,26 +32,14 @@ def load_data_choices():
 
 @st.cache_resource
 def load_model():
-    st.write("🤖 Starting model load...")
+    return joblib.load("model.pkl")
 
-    model = joblib.load("model.pkl")
-
-    st.write("✅ Model loaded successfully!")
-
-    return model
-
+# Load data and model
 try:
-    st.write("⏳ Loading dropdown data...")
     choices = load_data_choices()
-    st.write("✅ Step 2: Dropdown data loaded")
-
-    st.write("⏳ Loading model...")
     model = load_model()
-    st.write("✅ Step 3: Model loaded")
-
 except Exception as e:
-    st.error(f"Error: {e}")
-    st.exception(e)
+    st.error(f"Error loading application: {e}")
     st.stop()
 
 # Layout
@@ -134,8 +118,15 @@ if st.button("Predict Salary 🚀", type="primary"):
         "certifications": [certifications]
     })
 
-    with st.spinner("Calculating..."):
+    with st.spinner("Calculating salary prediction..."):
         prediction = model.predict(input_data)[0]
 
     st.success(f"### Estimated Salary: ₹{prediction:,.2f}")
     st.balloons()
+    
+st.markdown(
+    """
+    <meta name="google-adsense-account" content="ca-pub-9049397859247305,">
+    """,
+    unsafe_allow_html=True
+)
