@@ -59,6 +59,12 @@ def about():
 def privacy():
     return render_template("privacy.html")
 
+from flask import send_file
+
+@app.route('/ads.txt')
+def ads():
+    return send_file('ads.txt', mimetype='text/plain')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
