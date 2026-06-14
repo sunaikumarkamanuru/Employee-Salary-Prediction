@@ -1,25 +1,15 @@
-import streamlit as st
+from flask import Flask, render_template, request
 import pandas as pd
 import joblib
 
-# Set page config
-st.set_page_config(
-    page_title="Salary Predictor",
-    page_icon="💰",
-    layout="wide"
-)
+app = Flask(__name__)
 
-# App header
-st.title("💸 Employee Salary Prediction")
-st.markdown(
-    "Predict employee salaries based on their experience, education, role, and industry."
-)
+model = joblib.load("model.pkl")
 
-@st.cache_data
-def load_data_choices():
+def load_choices():
     df = pd.read_csv("job_salary_prediction_dataset.csv")
 
-    choices = {
+    return {
         "job_title": sorted(df["job_title"].dropna().unique().tolist()),
         "education_level": sorted(df["education_level"].dropna().unique().tolist()),
         "industry": sorted(df["industry"].dropna().unique().tolist()),
@@ -28,105 +18,47 @@ def load_data_choices():
         "remote_work": sorted(df["remote_work"].dropna().unique().tolist())
     }
 
-    return choices
-
-@st.cache_resource
-def load_model():
-    return joblib.load("model.pkl")
-
-# Load data and model
-try:
-    choices = load_data_choices()
-    model = load_model()
-except Exception as e:
-    st.error(f"Error loading application: {e}")
-    st.stop()
-
-# Layout
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("Professional Details")
-
-    job_title = st.selectbox(
-        "Job Title",
-        choices["job_title"]
+@app.route("/")
+def home():
+    choices = load_choices()
+    return render_template(
+        "index.html",
+        choices=choices
     )
 
-    experience_years = st.slider(
-        "Experience (Years)",
-        min_value=0,
-        max_value=50,
-        value=5
-    )
+@app.route("/predict", methods=["POST"])
+def predict():
 
-    education_level = st.selectbox(
-        "Education Level",
-        choices["education_level"]
-    )
-
-    skills_count = st.slider(
-        "Number of Skills",
-        min_value=0,
-        max_value=50,
-        value=5
-    )
-
-    certifications = st.slider(
-        "Number of Certifications",
-        min_value=0,
-        max_value=20,
-        value=1
-    )
-
-with col2:
-    st.subheader("Company & Location")
-
-    industry = st.selectbox(
-        "Industry",
-        choices["industry"]
-    )
-
-    company_size = st.selectbox(
-        "Company Size",
-        choices["company_size"]
-    )
-
-    location = st.selectbox(
-        "Location",
-        choices["location"]
-    )
-
-    remote_work = st.selectbox(
-        "Remote Work",
-        choices["remote_work"]
-    )
-
-st.markdown("---")
-
-if st.button("Predict Salary 🚀", type="primary"):
+    choices = load_choices()
 
     input_data = pd.DataFrame({
-        "job_title": [job_title],
-        "experience_years": [experience_years],
-        "education_level": [education_level],
-        "skills_count": [skills_count],
-        "industry": [industry],
-        "company_size": [company_size],
-        "location": [location],
-        "remote_work": [remote_work],
-        "certifications": [certifications]
+        "job_title": [request.form["job_title"]],
+        "experience_years": [int(request.form["experience_years"])],
+        "education_level": [request.form["education_level"]],
+        "skills_count": [int(request.form["skills_count"])],
+        "industry": [request.form["industry"]],
+        "company_size": [request.form["company_size"]],
+        "location": [request.form["location"]],
+        "remote_work": [request.form["remote_work"]],
+        "certifications": [int(request.form["certifications"])]
     })
 
-    with st.spinner("Calculating salary prediction..."):
-        prediction = model.predict(input_data)[0]
+    prediction = model.predict(input_data)[0]
 
-    st.success(f"### Estimated Salary: ₹{prediction:,.2f}")
-    st.balloons()
-    
-st.markdown(
-    """
-    <meta name="google-adsense-account" content="ca-pub-9049397859247305,">
-    """,
-    unsafe_allow_html=True
-)
+    return render_template(
+        "index.html",
+        choices=choices,
+        prediction=f"{prediction:,.2f}"
+    )
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -1,0 +1,143 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0e1117;
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.main-title{
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#b0b7c3;
+    font-size:1.1rem;
+}
+
+.card-custom{
+    background:#161b22;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #2d333b;
+    height:100%;
+}
+
+.section-title{
+    margin-bottom:25px;
+    font-weight:600;
+}
+
+label{
+    margin-bottom:8px;
+    display:block;
+    color:#d0d7de;
+}
+
+.form-control,
+.form-select{
+    background:#21262d;
+    border:1px solid #30363d;
+    color:white;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background:#21262d;
+    color:white;
+    border-color:#58a6ff;
+    box-shadow:none;
+}
+
+.predict-btn{
+    width:100%;
+    max-width:350px;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-size:18px;
+    font-weight:600;
+    background:#00c853;
+    color:white;
+    transition:0.3s;
+}
+
+.predict-btn:hover{
+    background:#00b248;
+    transform:translateY(-2px);
+}
+
+.result-card{
+    text-align:center;
+    padding:30px;
+    border-radius:18px;
+    background:#161b22;
+    border:1px solid #2d333b;
+}
+
+.result-card h2{
+    color:#b0b7c3;
+    margin-bottom:15px;
+}
+
+.result-card h1{
+    color:#00e676;
+    font-size:3rem;
+    font-weight:700;
+}
+
+@media(max-width:768px){
+
+    .main-title{
+        font-size:2rem;
+    }
+
+    .predict-btn{
+        width:100%;
+    }
+}
+
+.container-page{
+    max-width:900px;
+    margin:50px auto;
+    padding:30px;
+    background:#161b22;
+    border-radius:15px;
+    color:white;
+}
+
+.container-page h1,
+.container-page h2{
+    margin-bottom:15px;
+}
+
+.container-page p,
+.container-page li{
+    color:#c9d1d9;
+    line-height:1.8;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    color:#58a6ff;
+}
+
+.footer{
+    text-align:center;
+    margin-top:40px;
+    padding:20px;
+}
+
+.footer a{
+    margin:0 15px;
+    color:#58a6ff;
+    text-decoration:none;
+}
