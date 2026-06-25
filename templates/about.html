@@ -1,53 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Employee Salary Prediction</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% block title %}About Us — Employee Salary Prediction Using Machine Learning{% endblock %}
+{% block meta_description %}Learn about the Employee Salary Prediction platform. Understand our mission, machine learning methodology, and how we help professionals make data-driven salary decisions.{% endblock %}
+{% block canonical %}https://employee-salary-prediction-hjys.onrender.com/about{% endblock %}
+{% block og_title %}About Employee Salary Prediction — Our Mission and Methodology{% endblock %}
+{% block og_description %}Discover how our machine learning platform empowers professionals with accurate salary predictions based on experience, education, skills, and industry data.{% endblock %}
+{% block og_url %}https://employee-salary-prediction-hjys.onrender.com/about{% endblock %}
 
-<div class="container-page">
+{% block content %}
 
-    <h1>About Employee Salary Prediction</h1>
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <nav>
+            <ul class="breadcrumb-custom justify-content-center mb-3">
+                <li><a href="/">Home</a></li>
+                <li><span class="current">About</span></li>
+            </ul>
+        </nav>
+        <h1>About Employee Salary Prediction</h1>
+        <p class="lead">Empowering professionals with AI-driven salary intelligence for smarter career and compensation decisions.</p>
+    </div>
+</section>
 
-    <p>
-        Employee Salary Prediction is a machine learning web application
-        designed to estimate employee salaries based on professional
-        experience, education level, skills, certifications, industry,
-        company size, and work location.
-    </p>
+<!-- Content -->
+<section class="content-page">
+    <div class="container">
+        <div class="content-wrapper">
 
-    <p>
-        The application uses a trained machine learning model built with
-        Python and Scikit-Learn to provide salary estimates based on user inputs.
-    </p>
+            <h2>Our Mission</h2>
+            <p>Employee Salary Prediction was created with a singular mission: to democratize access to salary intelligence using the power of machine learning and data science. We believe that every professional — regardless of their background, industry, or career stage — deserves access to accurate, data-driven insights about their earning potential. In a world where compensation information has historically been opaque and asymmetric, our platform aims to level the playing field by providing transparent, actionable salary estimates based on real employee data.</p>
 
-    <h2>Our Mission</h2>
+            <p>Our goal is to empower students exploring career options, job seekers evaluating offers, professionals planning their next career move, and HR teams establishing fair compensation structures. By making salary prediction technology freely accessible, we contribute to a more transparent and equitable labor market where compensation decisions are informed by data rather than guesswork or negotiation power alone.</p>
 
-    <p>
-        Our goal is to provide students, job seekers, professionals,
-        and recruiters with insights into potential salary ranges
-        using data-driven predictions.
-    </p>
+            <h2>How the Prediction System Works</h2>
+            <p>Our salary prediction system is built on a robust machine learning pipeline that processes nine key professional attributes to generate compensation estimates. When a user submits their professional details through our prediction form, the system follows a carefully engineered process to deliver reliable results.</p>
 
-    <h2>Disclaimer</h2>
+            <h3>Data Foundation</h3>
+            <p>At the core of our system lies a comprehensive dataset containing over 100,000 employee records spanning multiple industries, experience levels, education backgrounds, and geographic locations. This dataset includes detailed information about job titles, years of experience, education qualifications, technical skill counts, professional certifications, industry sectors, company sizes, geographic locations, and remote work arrangements, along with corresponding salary figures. The breadth and depth of this data enables our model to identify nuanced patterns that simpler analytical approaches would miss.</p>
 
-    <p>
-        Salary predictions are estimates only and should not be considered
-        financial, legal, employment, or career advice.
-        Actual salaries may vary based on market conditions,
-        company policies, geography, and other factors.
-    </p>
+            <h3>Feature Engineering and Preprocessing</h3>
+            <p>Before the data reaches our machine learning model, it undergoes sophisticated preprocessing. Categorical variables such as job title, education level, industry, company size, location, and remote work status are transformed using One-Hot Encoding, which converts these text-based features into numerical representations that the algorithm can process effectively. Numerical features like experience years, skills count, and certification count are standardized to ensure consistent scaling. This preprocessing step is critical for model accuracy, as it ensures that all features contribute proportionally to the prediction.</p>
 
-    <a href="/" class="back-btn">
-        ← Back to Home
-    </a>
+            <h3>The Random Forest Regression Model</h3>
+            <p>We employ a Random Forest Regression algorithm — one of the most reliable and interpretable machine learning techniques for prediction tasks. Random Forest works by constructing an ensemble of decision trees, each trained on a random subset of the data using a technique called bootstrap aggregation (bagging). During prediction, each tree independently generates a salary estimate, and the final prediction is calculated as the average across all trees. This ensemble approach significantly reduces the risk of overfitting — a common problem where models perform well on training data but poorly on new, unseen data — and produces more stable, generalizable predictions.</p>
 
-</div>
+            <p>Our model is trained using an 80/20 train-test split, meaning 80% of the data is used for training the algorithm and 20% is reserved for evaluating its performance. We measure model quality using metrics like Mean Absolute Error (MAE) and R² Score, ensuring that predictions are both accurate and reliable before deploying the model to production.</p>
 
-</body>
-</html>
+            <h2>Who is This Platform For?</h2>
+            <p>Our salary prediction platform serves a diverse audience of stakeholders in the employment ecosystem:</p>
+            <ul>
+                <li><strong>Students and Recent Graduates:</strong> Explore potential earning trajectories before committing to specific career paths. Understand how different educational investments and career choices translate into compensation outcomes.</li>
+                <li><strong>Job Seekers:</strong> Evaluate whether job offers are competitive relative to market rates. Enter negotiations armed with data-driven salary benchmarks specific to your qualifications and target role.</li>
+                <li><strong>Working Professionals:</strong> Assess whether your current compensation aligns with market standards. Identify skill gaps or career moves that could lead to significant salary increases.</li>
+                <li><strong>HR Managers and Recruiters:</strong> Benchmark compensation packages against industry standards. Establish fair salary bands that attract top talent while maintaining budget discipline.</li>
+                <li><strong>Career Counselors and Coaches:</strong> Provide clients with quantitative salary insights to inform career planning conversations and goal-setting exercises.</li>
+                <li><strong>Researchers and Analysts:</strong> Study compensation patterns across industries, geographies, and demographics to inform labor market research and policy recommendations.</li>
+            </ul>
+
+            <h2>The Benefits of Data-Driven Salary Intelligence</h2>
+            <p>Traditional approaches to salary estimation often rely on anecdotal information, outdated surveys, or broad industry averages that fail to account for the specific combination of factors that determine individual compensation. Our machine learning approach offers several key advantages over these conventional methods:</p>
+            <ul>
+                <li><strong>Personalization:</strong> Predictions are tailored to your unique professional profile, considering the specific combination of your job title, experience, education, skills, certifications, industry, company size, location, and work arrangement.</li>
+                <li><strong>Scale:</strong> Our model learns from over 100,000 data points, capturing salary patterns across far more scenarios than any individual could research manually.</li>
+                <li><strong>Speed:</strong> Receive instant salary estimates instead of spending hours researching salary data across multiple sources and trying to synthesize disparate information.</li>
+                <li><strong>Objectivity:</strong> Machine learning predictions are based purely on data patterns, free from the biases that can influence human salary estimates or the selective reporting common in self-reported salary surveys.</li>
+                <li><strong>Accessibility:</strong> Our tool is free to use, requires no registration, and works on any device — making salary intelligence available to everyone, not just those who can afford expensive consulting services or premium salary databases.</li>
+            </ul>
+
+            <h2>Our Vision for the Future</h2>
+            <p>We envision a future where every career decision is supported by accurate, transparent compensation data. As we continue to develop our platform, we plan to expand our dataset to cover more industries, roles, and geographic regions. We are also exploring advanced modeling techniques including gradient boosting, neural networks, and natural language processing to further improve prediction accuracy and incorporate additional features like specific technology stacks, company culture indicators, and career progression trajectories.</p>
+
+            <p>We believe that salary transparency is a cornerstone of a fair and efficient labor market. By continuously improving our prediction technology and making it freely available, we aim to contribute to a world where compensation is determined by skills, experience, and market demand — not by information asymmetry or negotiation power.</p>
+
+            <h2>Disclaimer</h2>
+            <p>Salary predictions provided by this platform are statistical estimates based on historical data and machine learning algorithms. They should not be interpreted as guaranteed salary offers, financial advice, employment recommendations, or legal counsel. Actual salaries may vary significantly based on specific company policies, individual negotiation outcomes, market conditions, geographic factors, benefits packages, and other variables not fully captured in our model. Users should consider salary predictions as one of many data points in their career and compensation decision-making process.</p>
+
+            <div class="mt-4">
+                <a href="/" class="btn-primary-custom">Try Salary Prediction</a>
+                <a href="/salary-guide" class="btn-outline-custom ms-2">Read Salary Guide</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

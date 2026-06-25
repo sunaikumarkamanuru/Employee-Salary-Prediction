@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us — Employee Salary Prediction{% endblock %}
+{% block meta_description %}Contact the Employee Salary Prediction team. Send us your questions, feedback, or suggestions about our AI-powered salary prediction tool. We respond within 24-48 hours.{% endblock %}
+{% block canonical %}https://employee-salary-prediction-hjys.onrender.com/contact{% endblock %}
+{% block og_title %}Contact Us — Employee Salary Prediction{% endblock %}
+{% block og_description %}Have questions about salary prediction? Contact our team for support, feedback, or collaboration inquiries.{% endblock %}
+{% block og_url %}https://employee-salary-prediction-hjys.onrender.com/contact{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <nav>
+            <ul class="breadcrumb-custom justify-content-center mb-3">
+                <li><a href="/">Home</a></li>
+                <li><span class="current">Contact</span></li>
+            </ul>
+        </nav>
+        <h1>Contact Us</h1>
+        <p class="lead">We would love to hear from you. Send us your questions, feedback, or suggestions, and we will get back to you promptly.</p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="content-page">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="glass-card-static">
+                    <h2 style="margin-top: 0; border: none; padding-bottom: 0;">Send Us a Message</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Fill out the form below and we will respond within 24-48 hours.</p>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert-success-custom mb-4">
+                        ✅ {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <form method="POST" action="/contact" class="contact-form" id="contactForm">
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="contact_name">Full Name</label>
+                            <input type="text" class="form-control" name="name" id="contact_name" placeholder="Your full name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="contact_email">Email Address</label>
+                            <input type="email" class="form-control" name="email" id="contact_email" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="contact_subject">Subject</label>
+                            <select class="form-select" name="subject" id="contact_subject" required>
+                                <option value="" disabled selected>Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Feedback &amp; Suggestions</option>
+                                <option value="prediction">Prediction Results Question</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="collaboration">Collaboration &amp; Partnership</option>
+                                <option value="privacy">Privacy &amp; Data Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="contact_message">Message</label>
+                            <textarea class="form-control" name="message" id="contact_message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">📨 Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+                <div class="contact-info-card">
+                    <div class="ci-icon">📧</div>
+                    <div>
+                        <h5>Email Support</h5>
+                        <p>support@salarypredictai.com<br>We respond within 24-48 business hours.</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="ci-icon">🌐</div>
+                    <div>
+                        <h5>Website</h5>
+                        <p>employee-salary-prediction-hjys.onrender.com<br>Available 24/7 worldwide.</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="ci-icon">📍</div>
+                    <div>
+                        <h5>Location</h5>
+                        <p>India<br>Serving users globally.</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="ci-icon">💡</div>
+                    <div>
+                        <h5>Feedback</h5>
+                        <p>We value your input. Whether it is a feature suggestion, a prediction accuracy report, or general feedback — every message helps us improve the platform.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card-static mt-3">
+                    <h3 style="color: var(--text-primary); margin-top: 0;">About This Platform</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">Employee Salary Prediction is a free, AI-powered salary estimation tool designed for students, job seekers, professionals, and HR teams. Our machine learning model analyzes nine key professional attributes to provide data-driven compensation estimates. The platform is intended for educational and informational purposes. Salary predictions are estimates and should not be considered financial, legal, or career advice.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,80 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Employee Salary Prediction</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% block title %}Privacy Policy — Employee Salary Prediction{% endblock %}
+{% block meta_description %}Privacy Policy for Employee Salary Prediction. Learn how we handle your data, our cookie policy, third-party advertising practices, and your privacy rights.{% endblock %}
+{% block canonical %}https://employee-salary-prediction-hjys.onrender.com/privacy{% endblock %}
+{% block og_title %}Privacy Policy — Employee Salary Prediction{% endblock %}
+{% block og_description %}Read our comprehensive privacy policy covering data collection, cookies, Google AdSense, user rights, and data protection practices.{% endblock %}
+{% block og_url %}https://employee-salary-prediction-hjys.onrender.com/privacy{% endblock %}
 
-<div class="container-page">
+{% block content %}
 
-    <h1>Privacy Policy</h1>
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <nav>
+            <ul class="breadcrumb-custom justify-content-center mb-3">
+                <li><a href="/">Home</a></li>
+                <li><span class="current">Privacy Policy</span></li>
+            </ul>
+        </nav>
+        <h1>Privacy Policy</h1>
+        <p class="lead">Your privacy is important to us. This policy explains how we collect, use, and protect information when you use our website.</p>
+    </div>
+</section>
 
-    <p>
-        Your privacy is important to us.
-        This Privacy Policy explains how information is handled
-        when using the Employee Salary Prediction website.
-    </p>
+<!-- Content -->
+<section class="content-page">
+    <div class="container">
+        <div class="content-wrapper">
 
-    <h2>Information We Collect</h2>
+            <p><strong>Last Updated:</strong> June 2026</p>
 
-    <p>
-        We may collect information that you voluntarily enter into
-        the salary prediction form, such as:
-    </p>
+            <p>This Privacy Policy describes how Employee Salary Prediction ("we," "us," or "our") collects, uses, and shares information when you visit and interact with our website at employee-salary-prediction-hjys.onrender.com (the "Website"). By using our Website, you agree to the collection and use of information in accordance with this policy.</p>
 
-    <ul>
-        <li>Job title</li>
-        <li>Education level</li>
-        <li>Experience years</li>
-        <li>Skills count</li>
-        <li>Industry information</li>
-        <li>Location information</li>
-    </ul>
+            <h2>Information We Collect</h2>
 
-    <h2>How We Use Information</h2>
+            <h3>Information You Provide</h3>
+            <p>When you use our salary prediction tool, you may voluntarily enter professional information into the prediction form, including:</p>
+            <ul>
+                <li>Job title</li>
+                <li>Years of experience</li>
+                <li>Education level</li>
+                <li>Number of skills</li>
+                <li>Number of certifications</li>
+                <li>Industry sector</li>
+                <li>Company size</li>
+                <li>Geographic location</li>
+                <li>Remote work status</li>
+            </ul>
+            <p><strong>Important:</strong> This information is processed in real-time solely to generate your salary prediction and is <strong>not permanently stored</strong> in any database. We do not create user accounts, profiles, or maintain prediction histories associated with individual users.</p>
 
-    <p>
-        Information submitted through the prediction form is used solely
-        to generate salary predictions and improve user experience.
-    </p>
+            <p>When you use our contact form, you may provide your name, email address, and message content. This information is used solely to respond to your inquiry.</p>
 
-    <h2>Cookies</h2>
+            <h3>Information Collected Automatically</h3>
+            <p>Like most websites, our servers may automatically collect certain technical information when you visit the Website, including:</p>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type and version</li>
+                <li>Operating system</li>
+                <li>Referring website URL</li>
+                <li>Pages visited and time spent on each page</li>
+                <li>Date and time of visits</li>
+            </ul>
+            <p>This information is used for website analytics, performance monitoring, and improving the user experience. It is not used to personally identify individual visitors.</p>
 
-    <p>
-        This website may use cookies and third-party services such as
-        Google AdSense and Google Analytics to improve functionality
-        and provide relevant advertisements.
-    </p>
+            <h2>How We Use Information</h2>
+            <p>Information collected through our Website is used for the following purposes:</p>
+            <ul>
+                <li><strong>Salary Prediction:</strong> To process your inputs and generate salary estimates using our machine learning model.</li>
+                <li><strong>Website Improvement:</strong> To analyze usage patterns and improve the Website's functionality, content, and user experience.</li>
+                <li><strong>Communication:</strong> To respond to inquiries submitted through our contact form.</li>
+                <li><strong>Advertising:</strong> To display relevant advertisements through Google AdSense (see Third-Party Advertising section below).</li>
+            </ul>
 
-    <h2>Third-Party Advertising</h2>
+            <h2>Cookies and Tracking Technologies</h2>
+            <p>Our Website may use cookies and similar tracking technologies. Cookies are small text files stored on your device by your web browser. We use the following types of cookies:</p>
+            <ul>
+                <li><strong>Essential Cookies:</strong> Required for the Website to function properly, including session management and form processing.</li>
+                <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with the Website by collecting and reporting information anonymously.</li>
+                <li><strong>Advertising Cookies:</strong> Used by Google AdSense and other advertising partners to serve relevant advertisements based on your browsing activity.</li>
+            </ul>
+            <p>You can control and manage cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of the Website.</p>
 
-    <p>
-        Third-party vendors, including Google, may use cookies to serve ads
-        based on a user's previous visits to this website or other websites.
-    </p>
+            <h2>Third-Party Advertising (Google AdSense)</h2>
+            <p>We use Google AdSense to display advertisements on our Website. Google AdSense is a third-party advertising service provided by Google LLC.</p>
+            <ul>
+                <li>Google, as a third-party vendor, uses cookies to serve ads on our Website.</li>
+                <li>Google's use of the DART cookie enables it to serve ads to users based on their visits to our Website and other websites on the Internet.</li>
+                <li>Users may opt out of the use of the DART cookie by visiting the <strong>Google Ad and Content Network Privacy Policy</strong> at <a href="https://policies.google.com/technologies/ads" rel="nofollow noopener" target="_blank">https://policies.google.com/technologies/ads</a>.</li>
+                <li>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this Website or other websites.</li>
+                <li>Users may opt out of personalized advertising by visiting <strong>Google's Ads Settings</strong> at <a href="https://adssettings.google.com" rel="nofollow noopener" target="_blank">https://adssettings.google.com</a>.</li>
+                <li>Users in the European Economic Area may visit <a href="https://www.youronlinechoices.eu/" rel="nofollow noopener" target="_blank">www.youronlinechoices.eu</a> to manage advertising preferences.</li>
+            </ul>
+            <p>We do not have direct access to or control over the cookies used by Google AdSense or other third-party advertisers.</p>
 
-    <p>
-        Users may opt out of personalized advertising by visiting
-        Google's Ads Settings.
-    </p>
+            <h2>Data Retention</h2>
+            <p>We retain information only for as long as necessary to fulfill the purposes described in this Privacy Policy:</p>
+            <ul>
+                <li><strong>Prediction Data:</strong> Not retained. Processed in real-time and immediately discarded.</li>
+                <li><strong>Contact Form Data:</strong> Retained only as long as necessary to respond to your inquiry, then deleted.</li>
+                <li><strong>Analytics Data:</strong> Retained in aggregate, anonymized form for performance analysis purposes.</li>
+            </ul>
 
-    <h2>Contact</h2>
+            <h2>Data Security</h2>
+            <p>We implement reasonable technical and organizational measures to protect the information we process against unauthorized access, alteration, disclosure, or destruction. However, no method of data transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security. We use HTTPS encryption for all data transmitted between your browser and our servers.</p>
 
-    <p>
-        If you have any questions regarding this Privacy Policy,
-        please contact us through the Contact page.
-    </p>
+            <h2>Your Rights</h2>
+            <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+            <ul>
+                <li>The right to access the personal information we hold about you.</li>
+                <li>The right to request correction or deletion of your personal information.</li>
+                <li>The right to object to or restrict the processing of your personal information.</li>
+                <li>The right to opt out of personalized advertising.</li>
+                <li>The right to withdraw consent where processing is based on consent.</li>
+            </ul>
+            <p>To exercise any of these rights, please email us at support@salarypredictai.com.</p>
 
-    <a href="/" class="back-btn">
-        ← Back to Home
-    </a>
+            <h2>Children's Privacy</h2>
+            <p>Our Website is not directed to individuals under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently collected personal information from a child under 13, we will take steps to delete such information promptly. If you believe that a child under 13 has provided us with personal information, please contact us immediately.</p>
 
-</div>
+            <h2>Third-Party Links</h2>
+            <p>Our Website may contain links to third-party websites. We are not responsible for the privacy practices, content, or security of these external websites. We encourage you to review the privacy policies of any third-party websites you visit.</p>
 
-</body>
-</html>
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will post the updated policy on this page with a revised "Last Updated" date. We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <ul>
+                <li><strong>Email:</strong> support@salarypredictai.com</li>
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

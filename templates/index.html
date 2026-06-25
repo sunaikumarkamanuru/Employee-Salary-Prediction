@@ -1,179 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-adsense-account"
-      content="ca-pub-9049397859247305">
-    
-    <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9049397859247305"
-    crossorigin="anonymous"></script>
+{% extends "base.html" %}
 
-    <title>Employee Salary Prediction</title>
+{% block title %}Employee Salary Prediction Using Machine Learning — Estimate Your Compensation{% endblock %}
+{% block meta_description %}Predict employee salaries accurately using machine learning. Estimate compensation based on experience, education, skills, certifications, industry, company size, and location. Free salary calculator.{% endblock %}
+{% block canonical %}https://employee-salary-prediction-hjys.onrender.com/{% endblock %}
+{% block og_title %}Employee Salary Prediction Using Machine Learning{% endblock %}
+{% block og_description %}Free salary prediction tool. Estimate your compensation based on experience, education, skills, certifications, industry, and location.{% endblock %}
 
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-9049397859247305"
-        data-ad-slot="YOUR_SLOT_ID"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
+{% block extra_head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {"@type": "Question", "name": "How accurate is the salary prediction?", "acceptedAnswer": {"@type": "Answer", "text": "Our model is trained on a large dataset of employee records using Random Forest Regression. While predictions provide a reliable estimate, actual salaries may vary based on market conditions, company policies, and negotiation skills."}},
+        {"@type": "Question", "name": "What machine learning model is used for salary prediction?", "acceptedAnswer": {"@type": "Answer", "text": "We use a Random Forest Regression model built with Python and Scikit-Learn. The model is trained on thousands of employee records with features like job title, experience, education, skills, industry, and location."}},
+        {"@type": "Question", "name": "Is my data stored when I use the salary prediction tool?", "acceptedAnswer": {"@type": "Answer", "text": "No. The data you enter into the prediction form is processed in real-time to generate your salary estimate and is not permanently stored in any database."}}
+    ]
+}
+</script>
+{% endblock %}
 
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+{% block content %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<footer class="footer">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/privacy">Privacy Policy</a>
-</footer>
-
-<body>
-
-<div class="container py-5">
-
-    <div class="text-center mb-5">
-        <h1 class="main-title">💸 Employee Salary Prediction</h1>
-        <p class="subtitle">
-            Predict employee salaries based on their experience,
-            education, role, and industry.
-        </p>
+<!-- Hero -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h1>Employee Salary Prediction<br>Using Machine Learning</h1>
+                <p class="lead">Estimate salaries based on experience, education, certifications, industry, company size, skills, and location. Make informed career decisions with data-driven insights.</p>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a href="#predict" class="btn-primary-custom">Predict Salary</a>
+                    <a href="/about" class="btn-outline-custom">Learn More</a>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <form action="/predict" method="POST">
 
-        <div class="row">
+<!-- Prediction Form -->
+<section class="prediction-section" id="predict">
+    <div class="container">
+        <h2 class="section-heading">Salary Prediction Tool</h2>
+        <p class="section-desc">Fill in your professional details below to get an estimated salary range.</p>
 
-            <!-- Left Column -->
-            <div class="col-lg-6 mb-4">
-                <div class="card-custom">
+        <form method="POST" action="/predict">
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <div class="form-card">
+                        <h3>Professional Details</h3>
 
-                    <h3 class="section-title">
-                        Professional Details
-                    </h3>
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="job_title">Job Title</label>
+                            <select class="form-select" name="job_title" id="job_title" required>
+                                {% for jt in choices['job_title'] %}
+                                <option value="{{ jt }}">{{ jt }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
 
-                    <div class="mb-3">
-                        <label>Job Title</label>
-                        <select class="form-select" name="job_title">
-                            {% for item in choices.job_title %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="experience_years">Experience (Years)</label>
+                            <input type="number" class="form-control" name="experience_years" id="experience_years" min="0" max="50" value="3" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="education_level">Education Level</label>
+                            <select class="form-select" name="education_level" id="education_level" required>
+                                {% for ed in choices['education_level'] %}
+                                <option value="{{ ed }}">{{ ed }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="skills_count">Skills Count</label>
+                            <input type="number" class="form-control" name="skills_count" id="skills_count" min="1" max="30" value="5" required>
+                        </div>
+
+                        <div>
+                            <label class="form-label-custom" for="certifications">Certifications</label>
+                            <input type="number" class="form-control" name="certifications" id="certifications" min="0" max="20" value="1" required>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mb-3">
-                        <label>Experience (Years)</label>
-                        <input type="number"
-                               class="form-control"
-                               name="experience_years"
-                               min="0"
-                               max="50"
-                               value="5">
+                <div class="col-lg-6">
+                    <div class="form-card">
+                        <h3>Company &amp; Location</h3>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="industry">Industry</label>
+                            <select class="form-select" name="industry" id="industry" required>
+                                {% for ind in choices['industry'] %}
+                                <option value="{{ ind }}">{{ ind }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="company_size">Company Size</label>
+                            <select class="form-select" name="company_size" id="company_size" required>
+                                {% for cs in choices['company_size'] %}
+                                <option value="{{ cs }}">{{ cs }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label-custom" for="location">Location</label>
+                            <select class="form-select" name="location" id="location" required>
+                                {% for loc in choices['location'] %}
+                                <option value="{{ loc }}">{{ loc }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="form-label-custom" for="remote_work">Remote Work</label>
+                            <select class="form-select" name="remote_work" id="remote_work" required>
+                                {% for rw in choices['remote_work'] %}
+                                <option value="{{ rw }}">{{ rw }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label>Education Level</label>
-                        <select class="form-select" name="education_level">
-                            {% for item in choices.education_level %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Skills Count</label>
-                        <input type="number"
-                               class="form-control"
-                               name="skills_count"
-                               min="0"
-                               max="50"
-                               value="5">
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Certifications</label>
-                        <input type="number"
-                               class="form-control"
-                               name="certifications"
-                               min="0"
-                               max="20"
-                               value="1">
-                    </div>
-
                 </div>
             </div>
 
-            <!-- Right Column -->
-            <div class="col-lg-6 mb-4">
-                <div class="card-custom">
+            <div class="text-center mt-4">
+                <button type="submit" class="btn-predict">Predict Salary</button>
+            </div>
+        </form>
 
-                    <h3 class="section-title">
-                        Company & Location
-                    </h3>
+        {% if prediction %}
+        <div class="result-card mt-4 mx-auto" style="max-width: 500px;">
+            <p class="label">Estimated Annual Salary</p>
+            <p class="value">${{ prediction }}</p>
+            <p class="note">This estimate is based on the machine learning model and may vary based on real-world factors.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
 
-                    <div class="mb-3">
-                        <label>Industry</label>
-                        <select class="form-select" name="industry">
-                            {% for item in choices.industry %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
 
-                    <div class="mb-3">
-                        <label>Company Size</label>
-                        <select class="form-select" name="company_size">
-                            {% for item in choices.company_size %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+<!-- What is Salary Prediction -->
+<section class="section-block">
+    <div class="container">
+        <div class="prose">
+            <h2 class="section-heading">What is Employee Salary Prediction?</h2>
+            <p>Employee salary prediction is the process of using data analysis and machine learning algorithms to estimate how much a professional should earn based on their qualifications, experience, and the characteristics of their role. Rather than relying on rough industry averages or anecdotal information, salary prediction tools analyze patterns in large datasets of real employee records to generate more accurate and personalized estimates.</p>
+            <p>Our prediction tool uses a Random Forest Regression model trained on a dataset of over 100,000 employee records. The model considers nine distinct factors — job title, years of experience, education level, skills count, certifications, industry, company size, location, and remote work arrangement — to produce its salary estimate. This approach captures the complex, non-linear relationships between these variables that simpler methods would miss.</p>
+            <p>Understanding your market value is one of the most important steps you can take in managing your career. Whether you are a student exploring career paths, a job seeker evaluating an offer, a professional considering a career change, or an HR manager benchmarking compensation, having access to reliable salary data empowers better decisions. Traditional salary research often involves piecing together information from multiple sources, many of which are based on self-reported data with inherent biases. Machine learning offers a more systematic and evidence-based approach.</p>
+            <h3>Why Machine Learning Matters</h3>
+            <p>Salary determination is influenced by many interconnected factors. A software engineer with five years of experience in a large enterprise earns differently than one with the same experience at a startup. The same role in different industries or locations can have vastly different compensation. Machine learning algorithms excel at identifying these nuanced patterns because they can process thousands of data points simultaneously and learn complex relationships that would be impossible to capture with simple formulas or static salary tables.</p>
+            <p>Our model uses Random Forest Regression specifically because it handles both categorical variables (like job title and industry) and numerical variables (like experience years) effectively. Random Forest constructs hundreds of decision trees, each learning from a different subset of the data, and averages their predictions to produce a more stable and reliable estimate than any single tree could provide.</p>
+        </div>
+    </div>
+</section>
 
-                    <div class="mb-3">
-                        <label>Location</label>
-                        <select class="form-select" name="location">
-                            {% for item in choices.location %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
 
-                    <div class="mb-3">
-                        <label>Remote Work</label>
-                        <select class="form-select" name="remote_work">
-                            {% for item in choices.remote_work %}
-                            <option>{{ item }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+<!-- How ML Works -->
+<section class="section-alt">
+    <div class="container">
+        <h2 class="section-heading text-center">How the Prediction Process Works</h2>
+        <p class="section-desc centered">From raw data to your personalized salary estimate in seconds.</p>
 
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Data Collection</h4>
+                    <p>We gather employee datasets containing over 100,000 records with attributes like job title, experience, education, skills, certifications, industry, company size, location, and salary.</p>
                 </div>
             </div>
-
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Data Preprocessing</h4>
+                    <p>Raw data is cleaned and transformed. Categorical features like job title and industry are encoded using One-Hot Encoding, while numerical features are standardized for optimal model performance.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Model Training</h4>
+                    <p>We train a Random Forest Regression model — an ensemble of decision trees that learns complex, non-linear relationships between input features and salary outcomes using an 80/20 train-test split.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h4>Model Validation</h4>
+                    <p>The model is evaluated using metrics like Mean Absolute Error and R² Score on held-out test data to ensure predictions are accurate and generalize well to new inputs.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">5</div>
+                    <h4>User Input</h4>
+                    <p>You enter your professional details through the prediction form. The system processes your inputs through the same preprocessing pipeline used during training.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step-card">
+                    <div class="step-num">6</div>
+                    <h4>Salary Prediction</h4>
+                    <p>Your processed inputs are fed through the trained model, which generates a salary estimate based on the patterns it learned from over 100,000 real employee records.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="text-center">
-            <button type="submit" class="predict-btn">
-                Predict Salary 🚀
-            </button>
-        </div>
-
-    </form>
-
-    {% if prediction %}
-    <div class="result-card mt-4">
-        <h2>Estimated Salary</h2>
-        <h1>₹{{ prediction }}</h1>
     </div>
-    {% endif %}
+</section>
 
-</div>
 
-</body>
-</html>
+<!-- Factors -->
+<section class="section-block">
+    <div class="container">
+        <h2 class="section-heading">Factors That Affect Employee Salary</h2>
+        <p class="section-desc">Nine key attributes our model uses to estimate compensation.</p>
+
+        <div class="row g-3">
+            {% set factors = [
+                ("Job Title", "Your role and responsibilities directly influence compensation. Senior and specialized roles command higher pay."),
+                ("Experience", "Years of professional experience is one of the strongest predictors of salary across all industries."),
+                ("Education", "Higher education levels — Bachelor's, Master's, PhD — are associated with progressively higher compensation."),
+                ("Skills Count", "A broader skill set signals versatility and often correlates with higher market value."),
+                ("Certifications", "Professional certifications validate expertise and can increase salary by 10-25% in relevant fields."),
+                ("Industry", "Compensation varies significantly across sectors. Technology and finance tend to pay more than education or non-profits."),
+                ("Company Size", "Larger companies typically offer higher base salaries and more comprehensive benefits packages."),
+                ("Location", "Geographic location affects salary through cost of living differences and local labor market conditions."),
+                ("Remote Work", "Remote, hybrid, and on-site arrangements influence compensation differently depending on company policy.")
+            ] %}
+            {% for title, desc in factors %}
+            <div class="col-md-6 col-lg-4">
+                <div class="factor-item">
+                    <h4>{{ title }}</h4>
+                    <p>{{ desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Industry Insights -->
+<section class="section-alt">
+    <div class="container">
+        <h2 class="section-heading">Salary Insights by Industry</h2>
+        <p class="section-desc">How compensation compares across major industry sectors.</p>
+
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>Technology</h4>
+                    <p>Software engineering, data science, and cybersecurity roles lead in compensation. Strong demand for cloud computing, AI/ML, and DevOps skills continues to push salaries upward.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>Finance &amp; Banking</h4>
+                    <p>Quantitative analysts, investment bankers, and fintech professionals earn competitive salaries. Risk management and regulatory compliance skills are increasingly valued.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>Healthcare</h4>
+                    <p>Medical professionals, pharmaceutical researchers, and health informatics specialists are well-compensated. The intersection of healthcare and technology creates high-paying roles.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>Consulting</h4>
+                    <p>Management consultants and strategy advisors command premium salaries, particularly at top-tier firms. Industry expertise combined with analytical skills is highly rewarded.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>E-Commerce</h4>
+                    <p>Product managers, growth engineers, and data analysts in e-commerce earn competitive packages. The sector rewards professionals who can drive measurable business outcomes.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="industry-item">
+                    <h4>Manufacturing</h4>
+                    <p>Industrial engineers, operations managers, and supply chain specialists form the backbone. Automation and Industry 4.0 skills are creating new high-paying specializations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Career Growth -->
+<section class="section-block">
+    <div class="container">
+        <div class="prose">
+            <h2 class="section-heading">Strategies for Career Growth and Salary Advancement</h2>
+            <p>Building a well-compensated career requires more than just accumulating years of experience. The most successful professionals take a deliberate approach to skill development, strategic positioning, and career planning.</p>
+
+            <h3>Invest in High-Demand Skills</h3>
+            <p>The technology landscape evolves rapidly, and the skills that command the highest salary premiums shift accordingly. Currently, artificial intelligence, cloud architecture, cybersecurity, and data engineering are among the most valuable skill areas. Professionals who can combine deep technical expertise with business domain knowledge are particularly well-compensated.</p>
+
+            <h3>Pursue Strategic Certifications</h3>
+            <p>Professional certifications from recognized bodies like AWS, Google Cloud, Microsoft, and (ISC)² can boost salary by 10-25%. The key is choosing certifications that align with high-demand career paths rather than collecting credentials without strategic purpose.</p>
+
+            <h3>Build Your Professional Network</h3>
+            <p>Many of the best career opportunities never appear on public job boards — they are filled through professional networks and referrals. Investing in genuine professional relationships by contributing value to your community pays long-term dividends in career advancement.</p>
+
+            <h3>Consider Strategic Career Transitions</h3>
+            <p>Sometimes the fastest path to salary growth involves strategic lateral moves or industry transitions. Moving from a lower-paying industry to a higher-paying one while leveraging transferable skills can result in immediate salary increases. Similarly, transitioning from individual contributor roles to management positions, or from established companies to high-growth startups with equity compensation, can dramatically reshape your earning trajectory over time.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="section-alt faq-section">
+    <div class="container">
+        <h2 class="section-heading text-center">Frequently Asked Questions</h2>
+        <p class="section-desc centered">Common questions about salary prediction and our methodology.</p>
+
+        <div class="mx-auto" style="max-width: 720px;">
+            <div class="accordion" id="homeFAQ">
+                {% set faqs = [
+                    ("How accurate is the salary prediction?", "Our Random Forest Regression model is trained on over 100,000 employee records and achieves a high R² score on test data. Predictions provide reliable market-rate estimates, but actual salaries vary based on specific company policies, negotiation outcomes, and current market conditions."),
+                    ("What machine learning model is used?", "We use Random Forest Regression, an ensemble learning method that combines hundreds of decision trees. Each tree is trained on a random subset of the data, and the final prediction is the average of all trees, which reduces overfitting and produces more stable results."),
+                    ("Is my personal data stored?", "No. All prediction inputs are processed in real-time and immediately discarded. We do not create user accounts, store prediction histories, or maintain any personally identifiable information in our system."),
+                    ("Is this tool free to use?", "Yes. The salary prediction tool is completely free with unlimited predictions. No registration or payment required. The website is supported through advertising."),
+                    ("What factors have the biggest impact on salary?", "Based on our model's feature importance analysis, job title, years of experience, and industry consistently rank as the strongest predictors. Education level, location, and company size also have significant influence."),
+                    ("How should I use the salary prediction?", "Use it as one data point among many when evaluating job offers, preparing for salary negotiations, or planning career transitions. Combine it with industry salary surveys, professional network insights, and company-specific research for a complete picture."),
+                    ("Why does location affect salary so much?", "Geographic location influences salary through several mechanisms: cost of living differences, local labor market supply and demand, regional industry concentration, and varying tax and regulatory environments. Remote work is changing this dynamic, but location remains a significant factor."),
+                    ("How often is the model updated?", "We periodically retrain the model with updated salary data to ensure predictions reflect current market conditions. We monitor model performance metrics and retrain when significant shifts in the compensation landscape are detected."),
+                    ("Can I use this for salary negotiation?", "Absolutely. Understanding your estimated market value gives you a data-backed foundation for salary negotiations. We recommend combining our prediction with other research sources for the strongest negotiation position."),
+                    ("Does the prediction include benefits and bonuses?", "The prediction estimates base salary. Total compensation packages may include additional components like bonuses, stock options, health benefits, retirement contributions, and other perks that are not captured in the base salary estimate."),
+                    ("What education levels does the model support?", "The model supports multiple education levels including High School, Associate's Degree, Bachelor's Degree, Master's Degree, and PhD. The salary impact of education varies by industry — some fields value advanced degrees heavily while others prioritize practical skills and experience."),
+                    ("How does company size affect salary?", "Larger companies generally offer higher base salaries and more comprehensive benefits. However, smaller companies and startups may offer equity compensation, faster career progression, and broader responsibilities that can be more valuable long-term."),
+                    ("Is the prediction relevant globally?", "The model is trained on data spanning multiple geographic locations, but salary structures vary significantly between countries and regions. Use predictions as a relative benchmark rather than an absolute figure, especially when comparing across different countries."),
+                    ("What's the difference between skills count and certifications?", "Skills count refers to the breadth of your professional competencies — programming languages, frameworks, methodologies, and tools you can work with. Certifications are formal credentials from recognized organizations that validate specific expertise areas."),
+                    ("Does remote work increase or decrease salary?", "It depends. Some companies pay the same regardless of work arrangement, while others adjust compensation based on employee location. Generally, hybrid arrangements have become the norm, and purely remote roles may see location-based adjustments."),
+                    ("How do I increase my predicted salary?", "Focus on gaining experience in high-demand fields, earning relevant certifications, developing in-demand skills, and targeting industries and company sizes that pay well for your role. Our Career Growth and Skills vs Salary pages offer detailed strategies."),
+                    ("What industries pay the most?", "Technology, finance, and consulting consistently rank among the highest-paying industries. Within each industry, specialized and senior roles command the most competitive compensation. Visit our Salary Guide for detailed industry comparisons."),
+                    ("Can HR teams use this tool?", "Yes. HR professionals can use the tool to benchmark compensation packages, ensure salary offers are competitive, identify pay equity gaps, and inform compensation planning. The tool provides a quick market reference for individual roles."),
+                    ("How does experience affect salary growth?", "Salary growth is typically steepest in the first 5-10 years of a career, as professionals move from entry-level to mid-level positions. Growth continues but at a more moderate pace from 10-20 years, and the nature of compensation often shifts toward total package optimization at senior levels."),
+                    ("What should I do if the prediction seems too high or low?", "Predictions are based on average patterns in the training data. If the result seems off, consider whether your specific circumstances differ from typical profiles — niche specializations, startup equity, geographic cost of living, or industry-specific compensation structures can all cause significant deviations from model estimates.")
+                ] %}
+
+                {% for question, answer in faqs %}
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq{{ loop.index }}">{{ question }}</button>
+                    </h3>
+                    <div id="faq{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#homeFAQ">
+                        <div class="accordion-body">{{ answer }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Resources -->
+<section class="section-block">
+    <div class="container">
+        <h2 class="section-heading text-center">Explore More</h2>
+        <p class="section-desc centered">Dive deeper into salary data, career strategies, and skill analysis.</p>
+
+        <div class="row g-3 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <a href="/salary-guide" class="link-card">
+                    <h4>Salary Guide</h4>
+                    <p>Industry comparisons, education impact, experience phases, and negotiation strategies.</p>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/career-growth" class="link-card">
+                    <h4>Career Growth</h4>
+                    <p>Certifications, skill development roadmaps, and career planning frameworks.</p>
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/skills-vs-salary" class="link-card">
+                    <h4>Skills vs Salary</h4>
+                    <p>Which skills command the highest premiums and where to invest your learning time.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

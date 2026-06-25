@@ -1,0 +1,327 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ — Employee Salary Prediction Frequently Asked Questions{% endblock %}
+{% block meta_description %}Get answers to frequently asked questions about our employee salary prediction tool, machine learning methodology, data privacy, prediction accuracy, and how to use salary estimates for career planning.{% endblock %}
+{% block canonical %}https://employee-salary-prediction-hjys.onrender.com/faq{% endblock %}
+{% block og_title %}FAQ — Employee Salary Prediction Tool Questions &amp; Answers{% endblock %}
+{% block og_description %}Find detailed answers to 20+ frequently asked questions about our AI-powered salary prediction tool, methodology, and data privacy.{% endblock %}
+{% block og_url %}https://employee-salary-prediction-hjys.onrender.com/faq{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {"@type": "Question", "name": "How accurate is the salary prediction tool?", "acceptedAnswer": {"@type": "Answer", "text": "Our Random Forest Regression model is trained on 100,000+ employee records and achieves a high R² score. Predictions provide reliable market-rate estimates, though actual salaries may vary based on company policies, negotiation skills, and market conditions."}},
+        {"@type": "Question", "name": "What machine learning algorithm powers the predictions?", "acceptedAnswer": {"@type": "Answer", "text": "We use Random Forest Regression, an ensemble learning method that combines multiple decision trees to produce stable, accurate salary predictions. The model handles both categorical and numerical features effectively."}},
+        {"@type": "Question", "name": "Is my personal data stored or shared?", "acceptedAnswer": {"@type": "Answer", "text": "No. All prediction inputs are processed in real-time and immediately discarded. We do not store, sell, or share any personal information entered into the prediction form."}},
+        {"@type": "Question", "name": "Is the salary prediction tool free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, our salary prediction tool is completely free with unlimited predictions. No registration, subscription, or payment is required."}}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <nav>
+            <ul class="breadcrumb-custom justify-content-center mb-3">
+                <li><a href="/">Home</a></li>
+                <li><span class="current">FAQ</span></li>
+            </ul>
+        </nav>
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead">Everything you need to know about our salary prediction tool, methodology, data handling, and how to make the most of your salary estimates.</p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="content-page faq-section">
+    <div class="container">
+        <div class="content-wrapper">
+
+            <h2>About the Prediction Tool</h2>
+
+            <div class="accordion mb-4" id="faqTool">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft1">
+                            How accurate is the salary prediction tool?
+                        </button>
+                    </h3>
+                    <div id="ft1" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">Our machine learning model is trained on a comprehensive dataset of over 100,000 employee records and achieves a high R² score on test data, indicating strong predictive performance. The model captures complex relationships between nine input features (job title, experience, education, skills, certifications, industry, company size, location, and remote work) and salary outcomes. However, salary predictions are statistical estimates — actual compensation can vary based on specific company compensation structures, individual negotiation outcomes, current market conditions, specialized niche skills, performance bonuses, stock options, and other factors not captured in the model. We recommend using predictions as one data point alongside other research when making career decisions.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft2">
+                            How is the salary calculated?
+                        </button>
+                    </h3>
+                    <div id="ft2" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">When you submit your details through the prediction form, our system processes your inputs through a trained Random Forest Regression model. The model was built using Python and Scikit-Learn, with categorical features (job title, education level, industry, company size, location, remote work) encoded using One-Hot Encoding and numerical features (experience years, skills count, certifications) standardized for consistent scaling. The Random Forest algorithm works by running your inputs through hundreds of individual decision trees, each of which generates an independent salary estimate. The final prediction is calculated as the average across all trees, which provides a more robust and stable estimate than any single tree could produce.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft3">
+                            What input features does the model use?
+                        </button>
+                    </h3>
+                    <div id="ft3" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">The prediction model uses nine carefully selected features that have been identified as significant salary determinants: (1) Job Title — the specific role or position, (2) Experience Years — total years of professional experience, (3) Education Level — highest educational qualification achieved, (4) Skills Count — the number of professional skills possessed, (5) Certifications — the number of professional certifications held, (6) Industry — the sector in which you work or seek employment, (7) Company Size — the size category of the employer, (8) Location — geographic location of the position, and (9) Remote Work — whether the position is remote, hybrid, or on-site. Together, these features capture the most important dimensions that influence employee compensation.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft4">
+                            Can the prediction guarantee my actual earnings?
+                        </button>
+                    </h3>
+                    <div id="ft4" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">No. Salary predictions are statistical estimates based on patterns found in historical employee data. Your actual earnings will depend on many factors beyond what the model can capture, including your specific company's compensation philosophy, your negotiation skills, the current economic environment, supply and demand dynamics for your specific role in your location, your individual performance, the specific team and manager you report to, and the total compensation package including benefits, bonuses, and equity. Use the prediction as a helpful reference point for understanding market rates, but not as a guarantee of specific earnings.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft5">
+                            Is the tool free to use?
+                        </button>
+                    </h3>
+                    <div id="ft5" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">Yes, our salary prediction tool is completely free to use with no limitations. You can make unlimited predictions without registration, subscription fees, or any payment. We believe salary transparency benefits everyone in the job market, and we are committed to keeping this tool freely accessible. The website is supported through advertising, which allows us to maintain and improve the platform while keeping it free for all users.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ft6">
+                            Can I use this tool for salary negotiation?
+                        </button>
+                    </h3>
+                    <div id="ft6" class="accordion-collapse collapse" data-bs-parent="#faqTool">
+                        <div class="accordion-body">Absolutely. Our salary prediction tool is an excellent resource for salary negotiations. By understanding the estimated market value for your specific combination of skills, experience, education, and industry, you can enter salary discussions with data-backed confidence. We recommend using the prediction alongside other research sources — including industry salary surveys, professional network insights, and company-specific Glassdoor reviews — to build a comprehensive understanding of appropriate compensation for your role. Having multiple data points strengthens your negotiation position.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>About the Machine Learning Model</h2>
+
+            <div class="accordion mb-4" id="faqML">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fm1">
+                            What machine learning algorithm is used?
+                        </button>
+                    </h3>
+                    <div id="fm1" class="accordion-collapse collapse" data-bs-parent="#faqML">
+                        <div class="accordion-body">We use Random Forest Regression, which is an ensemble machine learning algorithm built with Python and Scikit-Learn. Random Forest constructs multiple decision trees during training, each trained on a random subset of the data (bootstrap sampling) using a random subset of features. During prediction, each tree produces an independent estimate, and the final salary prediction is the average of all individual tree predictions. This ensemble approach provides several advantages: it reduces overfitting, handles non-linear relationships well, works with both categorical and numerical data, and produces more stable predictions compared to single-model approaches.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fm2">
+                            What data was used to train the model?
+                        </button>
+                    </h3>
+                    <div id="fm2" class="accordion-collapse collapse" data-bs-parent="#faqML">
+                        <div class="accordion-body">The model was trained on a comprehensive dataset containing over 100,000 employee salary records. The dataset includes information about job titles across various roles, experience levels ranging from entry-level to executive, multiple education levels from diploma to PhD, diverse industry sectors, different company sizes, various geographic locations, remote work arrangements, skill counts, and certification numbers, along with corresponding salary figures. The data represents a diverse cross-section of the professional workforce and was carefully curated to ensure broad representativeness.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fm3">
+                            How often is the model updated?
+                        </button>
+                    </h3>
+                    <div id="fm3" class="accordion-collapse collapse" data-bs-parent="#faqML">
+                        <div class="accordion-body">We periodically retrain the model with updated salary data to ensure predictions remain aligned with current market conditions. The job market and compensation trends evolve continuously due to factors like economic conditions, industry growth, talent supply and demand changes, and shifts in the remote work landscape. Regular model updates ensure that our predictions reflect these changes rather than relying on potentially outdated patterns. We monitor key performance metrics and retrain the model when significant shifts in the compensation landscape are detected.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fm4">
+                            Why Random Forest instead of other algorithms?
+                        </button>
+                    </h3>
+                    <div id="fm4" class="accordion-collapse collapse" data-bs-parent="#faqML">
+                        <div class="accordion-body">Random Forest was selected after evaluating multiple algorithms because it offers an excellent balance of accuracy, interpretability, and robustness for salary prediction tasks. It naturally handles the mix of categorical features (like job title and industry) and numerical features (like experience years) in our dataset. Its ensemble nature makes it resistant to overfitting, which is important when predictions need to generalize to new, unseen combinations of inputs. Additionally, Random Forest provides feature importance rankings, which help us understand which factors are most influential in determining salary, adding transparency to the prediction process.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>Privacy and Data Security</h2>
+
+            <div class="accordion mb-4" id="faqPrivacy">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fp1">
+                            Is my personal information stored?
+                        </button>
+                    </h3>
+                    <div id="fp1" class="accordion-collapse collapse" data-bs-parent="#faqPrivacy">
+                        <div class="accordion-body">No. We do not permanently store any personal information or prediction inputs in any database. When you submit the prediction form, your inputs are processed in real-time to generate the salary estimate and are immediately discarded once the result is displayed. We do not create user profiles, track individual prediction histories, or maintain any personally identifiable information. Your privacy is fundamentally important to us, and our system is designed with privacy by default.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fp2">
+                            Is my data shared with third parties?
+                        </button>
+                    </h3>
+                    <div id="fp2" class="accordion-collapse collapse" data-bs-parent="#faqPrivacy">
+                        <div class="accordion-body">No. We do not sell, share, or distribute any user data to third parties. The only third-party services operating on our website are Google AdSense (for displaying advertisements) and standard web analytics, which use cookies in accordance with our <a href="/privacy">Privacy Policy</a>. These services do not have access to the data you enter into the prediction form. We encourage you to review our complete privacy policy for detailed information about our data handling practices.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fp3">
+                            Does the website use cookies?
+                        </button>
+                    </h3>
+                    <div id="fp3" class="accordion-collapse collapse" data-bs-parent="#faqPrivacy">
+                        <div class="accordion-body">Yes, our website may use cookies for functionality purposes and through third-party services like Google AdSense and web analytics. These cookies help improve your browsing experience and allow us to display relevant advertisements that support the free operation of our platform. You can manage your cookie preferences through your browser settings, and you may opt out of personalized advertising by visiting Google's Ads Settings page. Full details are available in our <a href="/privacy">Privacy Policy</a>.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>Salary Factors and Career Questions</h2>
+
+            <div class="accordion mb-4" id="faqCareer">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc1">
+                            How important is experience in determining salary?
+                        </button>
+                    </h3>
+                    <div id="fc1" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Experience is one of the most significant predictors of salary across all industries and roles. Our model's feature importance analysis consistently identifies experience years as a top factor. Generally, salary growth is steepest during the first 5-10 years of a career, continues at a steady pace from 10-20 years, and then grows more gradually. However, the quality of experience matters as much as the quantity — experience in leadership roles, with cutting-edge technologies, or in solving complex business problems carries more weight than simply accumulating years. To learn more about how experience affects salary growth, visit our <a href="/career-growth">Career Growth</a> page.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc2">
+                            Does education level significantly impact salary?
+                        </button>
+                    </h3>
+                    <div id="fc2" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Yes, education level has a measurable impact on salary, though the extent varies by industry. Professionals with Master's degrees typically earn 15-30% more than Bachelor's degree holders in comparable roles, while PhD holders command even higher premiums in research and specialized fields. In technology and software engineering, practical skills and portfolio can sometimes compensate for lower formal education, but in fields like healthcare, finance, and academic research, advanced degrees are often essential for accessing higher-paying roles. For detailed analysis, see our <a href="/salary-guide">Salary Guide</a>.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc3">
+                            Which industries offer the highest salaries?
+                        </button>
+                    </h3>
+                    <div id="fc3" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Based on our data analysis, the technology sector consistently offers the highest compensation, particularly in specialized areas like artificial intelligence, cloud computing, cybersecurity, and data engineering. Finance and fintech, management consulting, healthcare technology, and pharmaceutical companies also offer highly competitive salaries. Within any industry, compensation varies significantly by role — technical and leadership positions typically command the highest pay scales. Visit our <a href="/salary-guide">Salary Guide</a> for detailed industry salary comparisons.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc4">
+                            How do certifications affect my salary?
+                        </button>
+                    </h3>
+                    <div id="fc4" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Professional certifications can boost salary by 10-25% depending on the certification and industry. Highly valued certifications include AWS Solutions Architect, CISSP, PMP, Google Cloud Professional certifications, and Microsoft Azure certifications. The salary premium is strongest when certifications align with high-demand skills and are from recognized industry bodies. Our prediction model includes certifications as an input feature, reflecting the real-world salary premium that certified professionals typically enjoy. For more on which certifications to pursue, see our <a href="/career-growth">Career Growth</a> page.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc5">
+                            Does location significantly affect salary?
+                        </button>
+                    </h3>
+                    <div id="fc5" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Yes, geographic location is a major factor in salary determination. Major metropolitan areas and technology hubs typically offer higher salaries to compensate for higher costs of living. However, the rise of remote work is changing this dynamic — some companies now offer location-independent salaries, while others adjust pay based on the employee's location. Our model includes location as one of its nine prediction features to capture these geographic salary variations in its estimates.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fc6">
+                            How do skills count influence my salary?
+                        </button>
+                    </h3>
+                    <div id="fc6" class="accordion-collapse collapse" data-bs-parent="#faqCareer">
+                        <div class="accordion-body">Having a broader skill set generally correlates with higher compensation, as it reflects versatility and the ability to contribute across multiple areas. However, the depth and relevance of skills matters more than sheer quantity. A professional with deep expertise in 5 high-demand skills will typically earn more than someone with surface-level knowledge of 15 generic skills. The optimal strategy is developing deep expertise in core skills while maintaining broader competency across adjacent areas. See our <a href="/skills-vs-salary">Skills vs Salary</a> page for detailed analysis of which skills command the highest premiums.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>General Questions</h2>
+
+            <div class="accordion mb-4" id="faqGeneral">
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fg1">
+                            Who can benefit from this tool?
+                        </button>
+                    </h3>
+                    <div id="fg1" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                        <div class="accordion-body">Our salary prediction tool is designed for a broad audience: students exploring career paths and understanding earning potential, job seekers evaluating whether offers are competitive, professionals considering career transitions, HR managers and recruiters benchmarking salaries, career counselors advising clients, freelancers pricing their services, and researchers studying labor market trends. Essentially, anyone who wants data-driven insights into salary expectations can benefit from this tool.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fg2">
+                            Does the tool work on mobile devices?
+                        </button>
+                    </h3>
+                    <div id="fg2" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                        <div class="accordion-body">Yes, our website and prediction tool are fully responsive and optimized for all devices including smartphones, tablets, laptops, and desktop computers. The interface automatically adapts to your screen size for an optimal user experience. You can access and use the prediction tool from any modern web browser — Chrome, Safari, Firefox, Edge, or others — without needing to install any application or extension.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fg3">
+                            How do I report an issue or provide feedback?
+                        </button>
+                    </h3>
+                    <div id="fg3" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                        <div class="accordion-body">We welcome your feedback and suggestions. Please email us at support@salarypredictai.com with any questions, bug reports, or feature suggestions. We take all feedback seriously and use it to continuously improve the prediction tool, content quality, and overall user experience.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+                <a href="/" class="btn-primary-custom">Try Salary Prediction</a>
+                <a href="/about" class="btn-outline-custom ms-2">Learn More</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
